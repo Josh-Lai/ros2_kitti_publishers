@@ -107,12 +107,21 @@ void KittiPublishersNode::convert_pcl_to_pointcloud2(sensor_msgs::msg::PointClou
 
 void KittiPublishersNode::init_file_path()
 {
-    path_point_cloud_ = "data/2011_09_26/2011_09_26_drive_0015_sync/velodyne_points/data/";
-    path_image_gray_left_ = "data/2011_09_26/2011_09_26_drive_0015_sync/image_00/data/";
-    path_image_gray_right_ = "data/2011_09_26/2011_09_26_drive_0015_sync/image_01/data/";
-    path_image_color_left_ = "data/2011_09_26/2011_09_26_drive_0015_sync/image_02/data/";
-    path_image_color_right_ = "data/2011_09_26/2011_09_26_drive_0015_sync/image_03/data/";
-    path_oxts_ = "data/2011_09_26/2011_09_26_drive_0015_sync/oxts/data/";
+    this->declare_parameter("data_directory", "");
+    this->declare_parameter("patch_point_cloud", "");
+    this->declare_parameter("image_gray_left", "");
+    this->declare_parameter("image_gray_right", "");
+    this->declare_parameter("image_color_left", "");
+    this->declare_parameter("image_color_right", "");
+    this->declare_parameter("path_oxts", "");
+
+    std::string dir = this->get_parameter("data_directory").as_string();
+    path_point_cloud_ = dir + this->get_parameter("patch_point_cloud").as_string();
+    path_image_gray_left_ =  dir + this->get_parameter("image_gray_left").as_string();
+    path_image_gray_right_ = dir + this->get_parameter("image_gray_right").as_string();
+    path_image_color_left_ = dir + this->get_parameter("image_color_left").as_string();
+    path_image_color_right_ = dir + this->get_parameter("image_color_right").as_string();
+    path_oxts_ = dir + this->get_parameter("path_oxts").as_string();
 }
 
 std::string KittiPublishersNode::get_path(KittiPublishersNode::PublisherType publisher_type)

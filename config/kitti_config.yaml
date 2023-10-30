@@ -1,0 +1,11 @@
+publisher_node:
+  ros__parameters:
+    data_directory: "/media/josh/My Passport/Pumpkin/KITTI/2011_09_26/2011_09_26_drive_0001_sync/" #The Directory where the data is stored
+    patch_point_cloud: "velodyne_points/data/"
+    image_gray_left: "image_00/data/"
+    image_gray_right: "image_01/data/"
+    image_color_left: "image_02/data/"
+    image_color_right: "image_03/data/"
+    path_oxts: "oxts/data/"
+
+

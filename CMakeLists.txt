@@ -71,6 +71,8 @@ set(ROS2_KITTI_PUBLISHERS_SOURCES
   src/node/kitti_publishers_node.cpp
 )
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
 add_library(${PROJECT_NAME} SHARED ${ROS2_KITTI_PUBLISHERS_SOURCES})
 ament_target_dependencies(${PROJECT_NAME} ${dependencies})
 target_compile_definitions(${PROJECT_NAME} PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
@@ -94,6 +96,7 @@ install(DIRECTORY include/
 )
 
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 
 install(TARGETS
   ${PROJECT_NAME}
